@@ -1,0 +1,133 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-mobile-first-react-ui-for-a-ministry-prayer-experience-with-a-simple-navigation-structure-home-submit-prayer-prayer-history-prayer-detail",
+      "featureTitle": "Create a mobile-first React UI for a ministry prayer experience with a simple navigation structure (Home, Submit Prayer, Prayer History, Prayer Detail).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/MobileShell.tsx",
+        "frontend/src/pages/Home.tsx",
+        "frontend/src/pages/PrayerDetail.tsx",
+        "frontend/src/pages/PrayerHistory.tsx",
+        "frontend/src/pages/SubmitPrayer.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-internet-identity-sign-in-so-prayers-and-responses-are-associated-with-a-logged-in-user",
+      "featureTitle": "Implement Internet Identity sign-in so prayers and responses are associated with a logged-in user.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LoginButton.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-submit-prayer-flow-where-a-user-can-enter-a-prayer-request-text-and-submit-it-to-the-backend-receiving-a-generated-response",
+      "featureTitle": "Add a Submit Prayer flow where a user can enter a prayer request (text) and submit it to the backend, receiving a generated response.",
+      "files": [
+        "frontend/src/components/PrayerResponseCard.tsx",
+        "frontend/src/hooks/usePrayers.ts",
+        "frontend/src/pages/SubmitPrayer.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-prayer-history-and-prayer-detail-views-that-list-a-user-s-past-prayers-and-allow-viewing-the-full-prayer-text-and-generated-response",
+      "featureTitle": "Add Prayer History and Prayer Detail views that list a user's past prayers and allow viewing the full prayer text and generated response.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/PrayerDetail.tsx",
+        "frontend/src/pages/PrayerHistory.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-define-and-apply-a-coherent-visual-theme-suitable-for-a-calm-ministry-app-typography-spacing-color-palette-components-styling-and-enforce-it-consistently-across-all-screens",
+      "featureTitle": "Define and apply a coherent visual theme suitable for a calm ministry app (typography, spacing, color palette, components styling) and enforce it consistently across all screens.",
+      "files": [
+        "frontend/src/components/MobileShell.tsx",
+        "frontend/src/components/PrayerResponseCard.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-generate-required-static-images-for-the-app-theme-and-render-them-from-frontend-static-assets-not-via-backend",
+      "featureTitle": "Generate required static images for the app theme and render them from frontend static assets (not via backend).",
+      "files": [
+        "frontend/src/components/MobileShell.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

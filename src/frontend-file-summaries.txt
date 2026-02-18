@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for Home, Submit Prayer, Prayer History, and Prayer Detail pages with Layout wrapper that includes MobileShell and ProfileSetupModal.",
+  "frontend/src/hooks/usePrayers.ts": "React Query hooks for all prayer-related backend operations including user profile management, prayer submission, prayer history retrieval, and individual prayer fetching with proper loading states and cache invalidation.",
+  "frontend/src/components/MobileShell.tsx": "Mobile-first layout wrapper component providing consistent header with logo and login button, main content area, and bottom navigation bar with Home, Submit, and History tabs.",
+  "frontend/src/components/LoginButton.tsx": "Authentication button component using Internet Identity that handles sign-in/sign-out with loading states and clears React Query cache on logout.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts new users to enter their display name on first login, preventing modal flash by checking profile status before rendering.",
+  "frontend/src/components/PrayerResponseCard.tsx": "Reusable card component displaying generated prayer responses with calm styling, formatted timestamps, and gradient background for visual distinction.",
+  "frontend/src/pages/Home.tsx": "Landing page with hero section featuring generated background image, ministry mark, call-to-action buttons for authenticated users, and informational cards explaining app features with footer attribution.",
+  "frontend/src/pages/SubmitPrayer.tsx": "Prayer submission form page with multiline textarea, loading/error states, and navigation to prayer detail view upon successful submission; shows sign-in prompt for unauthenticated users.",
+  "frontend/src/pages/PrayerHistory.tsx": "List view of user's prayer history sorted by newest first, displaying truncated prayer text with dates and navigation to detail view on click; shows empty state and sign-in prompt when appropriate.",
+  "frontend/src/pages/PrayerDetail.tsx": "Detailed view of a single prayer showing full request text, timestamp, and generated response using PrayerResponseCard component with back navigation to history.",
+  "frontend/src/index.css": "Global styles with calm, contemplative OKLCH color system using soft purple/indigo tones (hue 260) for both light and dark modes with accessible contrast ratios and typography settings.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom soft shadow utilities and maintaining the OKLCH color system for a cohesive, calm design aesthetic."
+}

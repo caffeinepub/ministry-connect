@@ -1,0 +1,152 @@
+{
+  "kind": "build_request",
+  "title": "Mobile ministry app with prayer submission and AI-style responses",
+  "projectName": "Prayer Ministry",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a mobile-first React UI for a ministry prayer experience with a simple navigation structure (Home, Submit Prayer, Prayer History, Prayer Detail).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A mobile AI app that is a mobile ministry where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "App layout is optimized for small screens (phone-width first) and remains usable on desktop.",
+        "Users can access: Home, Submit Prayer, Prayer History, and Prayer Detail screens.",
+        "Navigation is consistent and accessible (keyboard/touch friendly)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement Internet Identity sign-in so prayers and responses are associated with a logged-in user.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A mobile AI app that is a mobile ministry where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can sign in and sign out using Internet Identity.",
+        "Backend stores data keyed by the authenticated principal so each user only sees their own prayers.",
+        "When signed out, the app prompts the user to sign in before submitting or viewing prayer history."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a Submit Prayer flow where a user can enter a prayer request (text) and submit it to the backend, receiving a generated response.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "...where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submit Prayer screen includes a multiline text input and a submit button.",
+        "On submit, the prayer is saved and a response is returned and shown to the user.",
+        "UI shows loading and error states during submission."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement an on-chain 'AI-style' prayer response generator that creates compassionate, ministry-appropriate responses using deterministic templates and keyword/category matching (no external AI/LLM calls).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "...where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Response generation does not call any external services or APIs.",
+        "Generated responses are respectful, uplifting, and in English.",
+        "At minimum, responses vary based on detected categories/keywords (e.g., healing, guidance, anxiety/fear, gratitude, grief) and include a short suggested prayer/affirmation.",
+        "The generated response is stored with the prayer record and returned on creation."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add Prayer History and Prayer Detail views that list a user's past prayers and allow viewing the full prayer text and generated response.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "...where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Prayer History shows a list of the signed-in user's prayers sorted by newest first.",
+        "Tapping/clicking a prayer opens Prayer Detail showing: prayer text, created date/time, response text, and response date/time (if stored).",
+        "Users cannot see other users' prayers."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Define and apply a coherent visual theme suitable for a calm ministry app (typography, spacing, color palette, components styling) and enforce it consistently across all screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "A mobile AI app that is a mobile ministry where the Ai answers Prayers."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Theme feels calm and contemplative and is consistent across navigation, forms, and content cards.",
+        "Text contrast meets basic accessibility expectations (readable on mobile).",
+        "UI uses Tailwind + existing UI components without editing read-only component sources."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Generate required static images for the app theme and render them from frontend static assets (not via backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "mobile ministry"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are placed under frontend/public/assets/generated and referenced directly in the UI.",
+        "Home screen displays the generated hero/background image without stretching artifacts.",
+        "App uses the generated icon/mark in the header or Home screen branding area."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "Do not use or require any external AI/LLM APIs or third-party authentication providers; only Internet Identity is allowed.",
+    "Do not edit files under frontend/src/components/ui or other immutable paths; compose them instead."
+  ],
+  "nonGoals": [
+    "Real-time chat or conversational messaging UI.",
+    "Push notifications, email/SMS messaging, or external integrations.",
+    "True large-language-model intelligence; responses must be generated locally/deterministically within the app."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Soft abstract light-ray background with subtle warm neutral gradients (prayer-hero-bg.dim_1440x900.png)",
+      "Minimal ministry mark: a simple line-art praying hands or dove symbol, monochrome, transparent background (ministry-mark.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

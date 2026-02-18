@@ -1,0 +1,71 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T20:42:14.551Z",
+  "summary": "Diff adds a full mobile-first React app with routing (Home/Submit/History/Detail), Internet Identity login UI, prayer submission/history/detail screens, and a Motoko backend actor with per-caller storage and a deterministic response generator entrypoint. It also adds extra, unrequested user-profile and admin/access-control mechanisms. Some requirements (image assets and the full behavior of the response generator) cannot be fully verified due to truncation/omitted files.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Deterministic on-chain 'AI-style' generator varies by detected categories/keywords (healing, guidance, anxiety/fear, gratitude, grief) and includes a short suggested prayer/affirmation; store response with record and return on creation; no external API calls.",
+      "reason": "The backend calls `generatePrayerResponse(requestText)` and stores `PrayerResponse`, but the diff is truncated before showing the implementation of `generatePrayerResponse`, so keyword/category variation and inclusion of a suggested prayer/affirmation cannot be confirmed from provided evidence.",
+      "evidence": [
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Generated static images are placed under `frontend/public/assets/generated` and referenced directly in the UI.",
+      "reason": "UI references the required image paths, but the actual image files under `frontend/public/assets/generated` are not shown in the diff summary (two added files were omitted), so their presence/placement cannot be verified from the provided evidence.",
+      "evidence": [
+        "frontend/src/components/MobileShell.tsx",
+        "frontend/src/pages/Home.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile feature (save/get caller profile) and mandatory profile setup modal prompting for a name on first login.",
+      "reason": "BuildRequest does not request user profiles or a name onboarding step; it only requires prayer submission/history and Internet Identity association.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/usePrayers.ts"
+      ]
+    },
+    {
+      "description": "Admin/access-control system with permission checks and initialization via a secret token parsed from URL parameter `caffeineAdminToken`.",
+      "reason": "BuildRequest does not request admin roles, secret-token bootstrap, or additional authorization layers beyond associating data with the authenticated principal.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/utils/urlParams.ts"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/LoginButton.tsx",
+    "frontend/src/components/MobileShell.tsx",
+    "frontend/src/components/PrayerResponseCard.tsx",
+    "frontend/src/components/ProfileSetupModal.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/usePrayers.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/PrayerDetail.tsx",
+    "frontend/src/pages/PrayerHistory.tsx",
+    "frontend/src/pages/SubmitPrayer.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

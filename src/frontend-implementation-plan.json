@@ -1,0 +1,183 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Prayer Ministry — mobile-first prayer submission and history (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a mobile-first React navigation structure with Home, Submit Prayer, Prayer History, and Prayer Detail screens.",
+      "acceptanceCriteria": [
+        "App layout is optimized for small screens (phone-width first) and remains usable on desktop.",
+        "Users can access: Home, Submit Prayer, Prayer History, and Prayer Detail screens.",
+        "Navigation is consistent and accessible (keyboard/touch friendly)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement the app’s primary navigation shell (header + bottom nav) and route/view switching for Home, Submit Prayer, Prayer History, and Prayer Detail; ensure keyboard/touch accessible navigation and mobile-first layout."
+        },
+        {
+          "path": "frontend/src/components/MobileShell.tsx",
+          "operation": "create",
+          "description": "Create a reusable mobile-first layout wrapper (header, content container, bottom navigation) used by all screens for consistent navigation and spacing."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create Home screen content (welcome/intro + CTA to submit prayer) designed for mobile-first rendering."
+        },
+        {
+          "path": "frontend/src/pages/SubmitPrayer.tsx",
+          "operation": "create",
+          "description": "Create Submit Prayer screen container; wire into navigation so it is reachable from Home and bottom nav."
+        },
+        {
+          "path": "frontend/src/pages/PrayerHistory.tsx",
+          "operation": "create",
+          "description": "Create Prayer History screen container and wire it into navigation so it is reachable from bottom nav."
+        },
+        {
+          "path": "frontend/src/pages/PrayerDetail.tsx",
+          "operation": "create",
+          "description": "Create Prayer Detail screen container; wire it so selecting a prayer from history navigates to detail."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add Internet Identity sign-in/sign-out and require authentication before submitting or viewing prayer history.",
+      "acceptanceCriteria": [
+        "User can sign in and sign out using Internet Identity.",
+        "Backend stores data keyed by the authenticated principal so each user only sees their own prayers.",
+        "When signed out, the app prompts the user to sign in before submitting or viewing prayer history."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LoginButton.tsx",
+          "operation": "create",
+          "description": "Use the authorization component’s Internet Identity flow to implement a Login/Logout button (with loading state) and clear cached React Query data on logout. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Use the authorization component’s user profile setup guidance to prompt for a display name on first login (no principal shown), calling getCallerUserProfile/saveCallerUserProfile and avoiding modal flash. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire authentication state into app: show LoginButton in header, show ProfileSetupModal when needed, and gate Submit Prayer and Prayer History behind sign-in (signed-out users see an in-app prompt to sign in). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement a Submit Prayer flow with multiline input, submit to backend, and show the generated response with loading/error states.",
+      "acceptanceCriteria": [
+        "Submit Prayer screen includes a multiline text input and a submit button.",
+        "On submit, the prayer is saved and a response is returned and shown to the user.",
+        "UI shows loading and error states during submission."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePrayers.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for prayer actions: submitPrayer mutation, getPrayerHistory query, and getPrayer query; integrate with the existing actor from useActor and provide typed loading/error states for UI consumption."
+        },
+        {
+          "path": "frontend/src/pages/SubmitPrayer.tsx",
+          "operation": "modify",
+          "description": "Implement the Submit Prayer form (multiline input + submit button), call the submitPrayer hook, render loading/error states, and on success navigate to the new Prayer Detail view for the created prayer (or show response inline if already available client-side)."
+        },
+        {
+          "path": "frontend/src/components/PrayerResponseCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable, calm-styled card component to display the generated response text and timestamp (if available) in Submit Prayer success and Prayer Detail."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add Prayer History list and Prayer Detail views for viewing prior prayers and their responses (for the signed-in user).",
+      "acceptanceCriteria": [
+        "Prayer History shows a list of the signed-in user's prayers sorted by newest first.",
+        "Tapping/clicking a prayer opens Prayer Detail showing: prayer text, created date/time, response text, and response date/time (if stored).",
+        "Users cannot see other users' prayers."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PrayerHistory.tsx",
+          "operation": "modify",
+          "description": "Implement signed-in Prayer History using the getPrayerHistory hook; sort newest-first client-side, render as tappable list items/cards, and navigate to Prayer Detail on selection; show loading/empty/error states."
+        },
+        {
+          "path": "frontend/src/pages/PrayerDetail.tsx",
+          "operation": "modify",
+          "description": "Implement Prayer Detail using the getPrayer hook; render prayer text, created date/time, response text, and response date/time (when present); show loading/error states and include a back affordance to history."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire detail navigation so Prayer Detail can be opened from Prayer History (e.g., via selected prayerId in app state or route params), without creating orphaned screens."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Define and apply a calm, consistent visual theme using Tailwind and composed UI components (no edits to read-only component sources).",
+      "acceptanceCriteria": [
+        "Theme feels calm and contemplative and is consistent across navigation, forms, and content cards.",
+        "Text contrast meets basic accessibility expectations (readable on mobile).",
+        "UI uses Tailwind + existing UI components without editing read-only component sources."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define calm theme tokens (CSS variables for Tailwind color system), base typography, and global spacing defaults to ensure consistent, accessible contrast across screens."
+        },
+        {
+          "path": "frontend/src/components/MobileShell.tsx",
+          "operation": "modify",
+          "description": "Apply consistent theming to header/bottom nav (colors, typography, spacing) and ensure touch-friendly hit targets for mobile while remaining usable on desktop."
+        },
+        {
+          "path": "frontend/src/components/PrayerResponseCard.tsx",
+          "operation": "modify",
+          "description": "Apply calm card styling and readable typography using Tailwind utility classes and composed existing UI components (do not edit read-only UI component sources)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add required generated static images as frontend assets and render them in the UI for branding and the Home hero/background.",
+      "acceptanceCriteria": [
+        "Generated images are placed under frontend/public/assets/generated and referenced directly in the UI.",
+        "Home screen displays the generated hero/background image without stretching artifacts.",
+        "App uses the generated icon/mark in the header or Home screen branding area."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/prayer-hero-bg.dim_1440x900.png",
+          "operation": "create",
+          "description": "Add the generated static hero/background image asset at the required path for direct UI referencing."
+        },
+        {
+          "path": "frontend/public/assets/generated/ministry-mark.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated ministry mark icon asset (transparent background) at the required path for direct UI referencing."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Render frontend/public/assets/generated/prayer-hero-bg.dim_1440x900.png on the Home screen as a non-stretched hero/background (preserve aspect ratio) and include CTA content layered appropriately."
+        },
+        {
+          "path": "frontend/src/components/MobileShell.tsx",
+          "operation": "modify",
+          "description": "Use frontend/public/assets/generated/ministry-mark.dim_512x512.png in the app header (and/or Home branding area) as the app’s visual mark."
+        }
+      ]
+    }
+  ]
+}

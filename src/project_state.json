@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Mobile AI ministry app where an AI responds to users' prayers.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Soft abstract light-ray background with subtle warm neutral gradients (prayer-hero-bg.dim_1440x900.png)\n- Minimal ministry mark: a simple line-art praying hands or dove symbol, monochrome, transparent background (ministry-mark.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-mobile-first-react-ui-for-a-ministry-prayer-experience-with-a-simple-navigation-structure-home-submit-prayer-prayer-history-prayer-detail",
+      "title": "Create a mobile-first React UI for a ministry prayer experience with a simple navigation structure (Home, Submit Prayer, Prayer History, Prayer Detail).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-internet-identity-sign-in-so-prayers-and-responses-are-associated-with-a-logged-in-user",
+      "title": "Implement Internet Identity sign-in so prayers and responses are associated with a logged-in user.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-submit-prayer-flow-where-a-user-can-enter-a-prayer-request-text-and-submit-it-to-the-backend-receiving-a-generated-response",
+      "title": "Add a Submit Prayer flow where a user can enter a prayer request (text) and submit it to the backend, receiving a generated response.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-prayer-history-and-prayer-detail-views-that-list-a-user-s-past-prayers-and-allow-viewing-the-full-prayer-text-and-generated-response",
+      "title": "Add Prayer History and Prayer Detail views that list a user's past prayers and allow viewing the full prayer text and generated response.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-define-and-apply-a-coherent-visual-theme-suitable-for-a-calm-ministry-app-typography-spacing-color-palette-components-styling-and-enforce-it-consistently-across-all-screens",
+      "title": "Define and apply a coherent visual theme suitable for a calm ministry app (typography, spacing, color palette, components styling) and enforce it consistently across all screens.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-required-static-images-for-the-app-theme-and-render-them-from-frontend-static-assets-not-via-backend",
+      "title": "Generate required static images for the app theme and render them from frontend static assets (not via backend).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "AI-powered prayer response feature (users submit prayers and receive AI-generated answers/responses).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement an on-chain 'AI-style' prayer response generator that creates compassionate, ministry-appropriate responses using deterministic templates and keyword/category matching (no external AI/LLM calls).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Prayer Ministry",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
